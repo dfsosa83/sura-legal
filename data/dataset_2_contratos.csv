@@ -1,0 +1,11 @@
+contract_id,categoria,valor_anual_usd,riesgo_cumplimiento,vencimiento_dias,clausula_proteccion_datos,auditoria_proveedor,incidentes_12m,region
+C-001,Tecnologia,320000,Alto,45,No,No,2,Bogota
+C-002,Salud,280000,Medio,120,Si,Si,0,Antioquia
+C-003,Logistica,150000,Alto,30,No,No,3,Valle
+C-004,Servicios,95000,Bajo,210,Si,No,0,Santander
+C-005,Tecnologia,410000,Alto,60,Si,No,1,Bogota
+C-006,Marketing,130000,Medio,25,No,No,1,Antioquia
+C-007,Logistica,220000,Alto,15,No,Si,2,Atlantico
+C-008,Salud,305000,Medio,75,Si,Si,0,Bogota
+C-009,Servicios,180000,Bajo,300,Si,No,0,Valle
+C-010,Tecnologia,260000,Alto,10,No,No,4,Bogota
