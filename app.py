@@ -55,11 +55,21 @@ st.markdown("""
     [data-testid="stSidebar"] p,
     [data-testid="stSidebar"] span,
     [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] li,
+    [data-testid="stSidebar"] ol,
+    [data-testid="stSidebar"] ul,
+    [data-testid="stSidebar"] a,
+    [data-testid="stSidebar"] strong,
+    [data-testid="stSidebar"] .stMarkdown,
     [data-testid="stSidebar"] .stRadio p {
         color: #ffffff !important;
     }
     [data-testid="stSidebar"] h2 {
         color: #E3E829 !important;
+    }
+    [data-testid="stSidebar"] h3,
+    [data-testid="stSidebar"] h4 {
+        color: #A8CDE2 !important;
     }
     /* ── Encabezados principales ── */
     h1 {
