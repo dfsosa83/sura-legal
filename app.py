@@ -71,6 +71,17 @@ st.markdown("""
     [data-testid="stSidebar"] h4 {
         color: #A8CDE2 !important;
     }
+    /* ── Expander dentro del sidebar ── */
+    [data-testid="stSidebar"] details {
+        background-color: #243d58 !important;
+        border: 1px solid #3C86B4 !important;
+        border-radius: 6px !important;
+    }
+    [data-testid="stSidebar"] details summary,
+    [data-testid="stSidebar"] details summary span,
+    [data-testid="stSidebar"] details summary p {
+        color: #A8CDE2 !important;
+    }
     /* ── Encabezados principales ── */
     h1 {
         color: #1a2d42;
