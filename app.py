@@ -185,6 +185,35 @@ with st.sidebar:
     )
 
     st.markdown("---")
+
+    # ── Guía de navegación ──────────────────────
+    with st.expander("ℹ️ Cómo navegar", expanded=False):
+        st.markdown("""
+**Usa el menú de arriba** para moverte entre las tres secciones.
+
+---
+**⚖️ Tutelas**
+1. Lee el **contexto ejecutivo** para entender el problema
+2. Revisa los **4 indicadores** clave
+3. Filtra los **casos críticos** por regional o causal
+4. Descarga la lista con el botón ⬇️
+5. Explora las **gráficas** en las pestañas
+
+---
+**📋 Contratos**
+1. Lee el **contexto ejecutivo**
+2. Revisa los **indicadores** de vencimiento
+3. Filtra contratos por **nivel de alerta** o departamento
+4. Descarga la lista con el botón ⬇️
+5. Explora la **curva de vencimientos**
+
+---
+**🧾 Facturación**
+Propuesta de rediseño del proceso.
+Expande cada etapa del flujo para ver detalle.
+        """)
+
+    st.markdown("---")
     st.caption("Corte: 13 mayo 2026 · Reto Técnico SURA")
 
 
@@ -195,6 +224,54 @@ if seccion == "⚖️  Gestión de Tutelas":
 
     st.title("⚖️ Gestión de Tutelas 2026")
     st.markdown("Período analizado: **enero – abril 2026** · Registros: **12.751 tutelas**")
+    st.markdown("---")
+
+    # ── Contexto ejecutivo ──────────────────────
+    with st.expander("📄 Contexto ejecutivo — leer antes de explorar los datos", expanded=True):
+        col_n1, col_n2, col_n3 = st.columns(3)
+
+        with col_n1:
+            st.markdown("""
+#### 🟡 La operación responde, pero sin margen
+Cada tutela que llega a SURA activa un contador. La ley da **48 horas** para contestar,
+y el equipo llega: el **90.7 %** de los expedientes se responden a tiempo.
+
+Pero la mediana real de respuesta es **53 horas** — justo por encima del límite —,
+lo que significa que la mayoría de los cumplimientos son ajustados, no holgados.
+Cualquier incremento sostenido en volumen los convertiría en incumplimientos.
+
+> **Punto caliente:** CENTRO × Seguros Empresariales tiene casi la mitad de sus
+> expedientes fuera de plazo.
+            """)
+
+        with col_n2:
+            st.markdown("""
+#### 🔴 Lo que el volumen no muestra
+La favorabilidad global en primera instancia es del **51 %**.
+Uno de cada dos fallos sale en contra de SURA.
+
+El número varía mucho según el área: ARL y Vida superan el **75 % de favorabilidad**,
+mientras que **EPS Prestaciones Económicas baja al 42 %**.
+En más de mil casos anuales, la organización está perdiendo sistemáticamente.
+
+> Eso no es mala suerte — es una señal de que la estrategia
+> argumentativa en esa materia necesita revisión.
+            """)
+
+        with col_n3:
+            st.markdown("""
+#### 🟢 Qué hacer y cómo evitar repetirlo
+**Urgente:**
+- Revisar los **858 expedientes sin contestación** registrada
+- Trabajar los **1,110 casos críticos** con la lista priorizada
+- Reforzar CENTRO × Seguros Empresariales
+
+**Mediano plazo:**
+- Alerta automática a las **40 horas** sin contestación (quedan 8 horas de margen)
+- Completar el campo *Área causal* (vacío en >50 % de EPS)
+- Automatizar extracción diaria y recálculo del score de criticidad
+            """)
+
     st.markdown("---")
 
     # ── KPI cards ──────────────────────────────
@@ -348,6 +425,57 @@ elif seccion == "📋  Portafolio Contractual":
 
     st.title("📋 Portafolio Contractual 2026")
     st.markdown("Corte: **13 mayo 2026** · Total en sistema: **52.004 contratos**")
+    st.markdown("---")
+
+    # ── Contexto ejecutivo ──────────────────────
+    with st.expander("📄 Contexto ejecutivo — leer antes de explorar los datos", expanded=True):
+        col_n1, col_n2, col_n3 = st.columns(3)
+
+        with col_n1:
+            st.markdown("""
+#### 🟡 Contratos que vencen en silencio
+De los 52,004 contratos en el sistema, el **43,2 % están activos** a la fecha de corte.
+
+Dentro de ese bloque conviven **1,870 contratos cuya fecha de expiración ya pasó**
+y siguen marcados como vigentes: sin renovación, sin cierre, solo silencio administrativo.
+
+> Los meses más críticos del año son **mayo–julio 2026** (ya en curso) y
+> **diciembre 2026–enero 2027**, con más de 2,200 vencimientos mensuales.
+            """)
+
+        with col_n2:
+            st.markdown("""
+#### 🔴 Dónde se concentra el riesgo
+El riesgo no está distribuido uniformemente:
+
+- **ARL:** 99.2 % de sus contratos en riesgo
+- **Tecnología:** 95.5 %
+- **ARL Salud y ARL Prevención** (los dos departamentos con más volumen) superan el 55 %
+
+El proveedor con mayor concentración acumula **624 contratos**.
+Los diez primeros proveedores representan más de 4,400 contratos activos.
+
+> El vencimiento desatendido de uno puede interrumpir servicios
+> en múltiples unidades de negocio simultáneamente.
+            """)
+
+        with col_n3:
+            st.markdown("""
+#### 🟢 Qué hacer y cómo no descubrirlo tarde
+**Esta semana:**
+- Revisar los **1,870 contratos vencidos** sin cierre registrado
+- Decidir sobre los **890 que vencen en ≤30 días**: renovar o terminar
+
+**Antes de automatizar:**
+- Corregir los **3,230 contratos sin administrador asignado** — una alerta sin destinatario no sirve
+- Sanear los **883 con fecha inicio > fecha expiración**
+
+**Propuesta de automatización:**
+- Alerta automática a 90 y 30 días antes del vencimiento
+- Reporte semanal de activos con fecha ya vencida
+- Validación en registro que bloquee fechas inconsistentes
+            """)
+
     st.markdown("---")
 
     # ── KPI cards ──────────────────────────────
