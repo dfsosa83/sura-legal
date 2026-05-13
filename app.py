@@ -32,6 +32,78 @@ OUTPUTS = BASE / "outputs"
 DATA    = BASE / "data"
 
 # ──────────────────────────────────────────────
+# PALETA DE COLORES SURA
+# ──────────────────────────────────────────────
+SURA_YELLOW   = "#E3E829"   # Amarillo SURA principal
+SURA_BLUE     = "#3C86B4"   # Azul 03
+SURA_BLUE2    = "#A8CDE2"   # Azul 01 (más claro)
+SURA_GREEN    = "#52C599"   # Esmeralda
+SURA_GREEN2   = "#A3E1C2"   # Esmeralda claro
+SURA_RED      = "#9E3541"   # Vino (riesgo alto)
+SURA_RED2     = "#DE9CA6"   # Vino claro
+SURA_CAMEL    = "#D5AB80"   # Camel (riesgo medio)
+SURA_GRAY     = "#727272"   # Gris oscuro
+SURA_GRAY2    = "#C8C8C8"   # Gris claro
+
+# CSS personalizado con identidad visual SURA
+st.markdown("""
+<style>
+    /* ── Sidebar ── */
+    [data-testid="stSidebar"] {
+        background-color: #1a2d42;
+    }
+    [data-testid="stSidebar"] p,
+    [data-testid="stSidebar"] span,
+    [data-testid="stSidebar"] label,
+    [data-testid="stSidebar"] .stRadio p {
+        color: #ffffff !important;
+    }
+    [data-testid="stSidebar"] h2 {
+        color: #E3E829 !important;
+    }
+    /* ── Encabezados principales ── */
+    h1 {
+        color: #1a2d42;
+        border-bottom: 4px solid #E3E829;
+        padding-bottom: 8px;
+    }
+    h2 { color: #3C86B4; }
+    h3 { color: #3C86B4; }
+    /* ── Tarjetas de métricas ── */
+    [data-testid="stMetric"] {
+        background-color: #f5f8fb;
+        border-left: 4px solid #E3E829;
+        border-radius: 4px;
+        padding: 12px 16px;
+    }
+    [data-testid="stMetricLabel"] { color: #1a2d42 !important; font-weight: 600; }
+    [data-testid="stMetricValue"] { color: #3C86B4 !important; font-size: 2rem !important; }
+    /* ── Botón de descarga ── */
+    .stDownloadButton > button {
+        background-color: #E3E829;
+        color: #1a2d42;
+        font-weight: 700;
+        border: none;
+        border-radius: 4px;
+    }
+    .stDownloadButton > button:hover {
+        background-color: #FFE946;
+        color: #1a2d42;
+    }
+    /* ── Tabs ── */
+    .stTabs [data-baseweb="tab-list"] {
+        border-bottom: 2px solid #E3E829;
+    }
+    .stTabs [aria-selected="true"] {
+        background-color: #E3E829 !important;
+        color: #1a2d42 !important;
+        font-weight: 700;
+        border-radius: 4px 4px 0 0;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# ──────────────────────────────────────────────
 # HELPERS — funciones reutilizables
 # ──────────────────────────────────────────────
 
@@ -97,9 +169,9 @@ def tarjeta_kpi(col, valor, etiqueta, color="#1f77b4", ayuda=None):
 # ──────────────────────────────────────────────
 with st.sidebar:
     st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/SURA_logo.svg/320px-SURA_logo.svg.png",
-             width=140)
+             width=150)
     st.markdown("## Analítica Legal 2026")
-    st.markdown("---")
+    st.markdown("<hr style='border:1px solid #E3E829;margin:8px 0'>", unsafe_allow_html=True)
 
     seccion = st.radio(
         "Navegar a:",
@@ -205,7 +277,7 @@ if seccion == "⚖️  Gestión de Tutelas":
             labels={"pct": "% Oportuno", "Regional T": "Regional"},
             title="% Oportunidad de respuesta por regional",
             color="pct",
-            color_continuous_scale=["#d9534f", "#f0ad4e", "#5cb85c"],
+            color_continuous_scale=[SURA_RED, SURA_CAMEL, SURA_GREEN],
             range_color=[80, 100],
         )
         fig.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
@@ -233,9 +305,9 @@ if seccion == "⚖️  Gestión de Tutelas":
             title="Distribución de fallos por área causal (top 8)",
             labels={"n": "Casos", "Area causal": "", "Clasificación fallo 1ra Instancia": "Fallo"},
             color_discrete_map={
-                "Fallo favorable": "#5cb85c",
-                "Fallo desfavorable": "#d9534f",
-                "Desistimiento": "#aec6cf",
+                "Fallo favorable": SURA_GREEN,
+                "Fallo desfavorable": SURA_RED,
+                "Desistimiento": SURA_GRAY2,
             },
         )
         fig2.update_layout(height=400, legend_title_text="Resultado")
@@ -255,7 +327,7 @@ if seccion == "⚖️  Gestión de Tutelas":
         fig3 = px.imshow(
             pivot,
             text_auto=True,
-            color_continuous_scale="Blues",
+            color_continuous_scale=[SURA_BLUE2, SURA_BLUE, "#1a2d42"],
             title="Concentración de tutelas — Regional × Área causal",
             labels={"color": "Casos"},
             aspect="auto",
@@ -342,7 +414,7 @@ elif seccion == "📋  Portafolio Contractual":
             names="Estado",
             values="Contratos",
             title="Estado general del portafolio",
-            color_discrete_sequence=["#5cb85c", "#aec6cf"],
+            color_discrete_sequence=[SURA_GREEN, SURA_GRAY2],
             hole=0.4,
         )
         fig.update_traces(textposition="inside", textinfo="percent+label")
@@ -373,7 +445,7 @@ elif seccion == "📋  Portafolio Contractual":
             title="% contratos en riesgo (≤90 días) por departamento — top 12",
             labels={"pct": "% En riesgo", "Organización - Departamento": ""},
             color="pct",
-            color_continuous_scale=["#5cb85c", "#f0ad4e", "#d9534f"],
+            color_continuous_scale=[SURA_GREEN, SURA_CAMEL, SURA_RED],
         )
         fig2.update_traces(texttemplate="%{text:.1f}%", textposition="outside")
         fig2.update_layout(coloraxis_showscale=False, height=420)
@@ -400,7 +472,7 @@ elif seccion == "📋  Portafolio Contractual":
             title="Proyección de vencimientos — próximos 18 meses",
             labels={"mes_venc": "Mes", "Vencimientos": "Contratos que vencen"},
             color="Vencimientos",
-            color_continuous_scale=["#5cb85c", "#f0ad4e", "#d9534f"],
+            color_continuous_scale=[SURA_GREEN, SURA_CAMEL, SURA_RED],
         )
         fig3.update_layout(coloraxis_showscale=False, xaxis_tickangle=-45)
         st.plotly_chart(fig3, use_container_width=True)
