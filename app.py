@@ -168,10 +168,15 @@ def tarjeta_kpi(col, valor, etiqueta, color="#1f77b4", ayuda=None):
 # BARRA LATERAL — navegación principal
 # ──────────────────────────────────────────────
 with st.sidebar:
-    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/SURA_logo.svg/320px-SURA_logo.svg.png",
-             width=150)
-    st.markdown("## Analítica Legal 2026")
-    st.markdown("<hr style='border:1px solid #E3E829;margin:8px 0'>", unsafe_allow_html=True)
+    st.markdown("""
+<div style='text-align:center; padding: 12px 0 4px 0;'>
+    <span style='font-size:2.2rem; font-weight:900; letter-spacing:4px; color:#E3E829;'>SURA</span>
+</div>
+<div style='text-align:center; padding-bottom:4px;'>
+    <span style='font-size:0.8rem; color:#A8CDE2; letter-spacing:2px; text-transform:uppercase;'>Analítica Legal</span>
+</div>
+<hr style='border:1px solid #E3E829; margin:8px 0'>
+""", unsafe_allow_html=True)
 
     seccion = st.radio(
         "Navegar a:",
