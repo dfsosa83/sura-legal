@@ -1,0 +1,13 @@
+case_id,tipo_proceso,region,monto_reclamado_usd,estado,dias_abierto,resultado,reserva_contable_usd,fecha_apertura
+L-001,Laboral,Antioquia,120000,Abierto,420,En_curso,90000,2024-03-10
+L-002,Civil,Bogota,85000,Cerrado,120,Ganado,15000,2024-09-05
+L-003,Consumidor,Valle,45000,Abierto,210,En_curso,30000,2025-01-20
+L-004,Laboral,Atlantico,200000,Abierto,530,En_curso,160000,2023-11-18
+L-005,Regulatorio,Bogota,70000,Cerrado,180,Conciliado,50000,2024-07-02
+L-006,Civil,Santander,150000,Abierto,310,En_curso,110000,2024-10-12
+L-007,Consumidor,Antioquia,30000,Cerrado,95,Perdido,28000,2025-02-04
+L-008,Laboral,Bogota,175000,Abierto,460,En_curso,140000,2024-01-15
+L-009,Regulatorio,Valle,95000,Abierto,275,En_curso,70000,2024-11-08
+L-010,Civil,Antioquia,60000,Cerrado,240,Perdido,55000,2024-05-26
+L-011,Consumidor,Bogota,40000,Abierto,130,En_curso,22000,2025-03-01
+L-012,Laboral,Santander,110000,Cerrado,200,Conciliado,80000,2024-06-14
